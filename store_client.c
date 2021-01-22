@@ -35,6 +35,14 @@ int stockroom[NUM_ITEMS];
  */
 void refill_from_stockroom() {
   // TODO: implement this function
+  for (int i = 0; i < 10; i++) {
+	for (int j = 0; j < 4; j++) {
+	  unsigned short need = 0xFFFF - num_items(i, j);
+	  int available = stockroom[get_id(i, j)];
+	  // decide how many we should add and run add_items
+	  // update stockroom & aisle
+	}
+  }
 }
 
 /* Remove at most num items from sections with the given item id, starting with
@@ -47,6 +55,17 @@ void refill_from_stockroom() {
  */
 int fulfill_order(unsigned short id, int num) {
   // TODO: implement this function
+  int removed = 0;
+  for (int i = 0; i < 10; i++) {
+	for (int j = 0; j < 4; j++) {
+	  if (get_id(i, j) == id) {
+		if (num_items(i, j) <= num - removed) {
+		  removed = num_items(i, j)
+		  remove_items(i, j, removed);
+		}
+	  }
+	}
+  }
   return 0;
 }
 
